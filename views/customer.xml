@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="customer_info_tree" model="ir.ui.view">
+        <field name="name">customer.info.tree</field>
+        <field name="model">customer.info</field>
+        <field name="arch" type="xml">
+            <tree string="Customer">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="customer_address_number"/>
+                <field name="customer_phone_number"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="customer_info_form" model="ir.ui.view">
+        <field name="name">customer.info.form</field>
+        <field name="model">customer.info</field>
+        <field name="arch" type="xml">
+            <form string="Customer">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+
+                        </group>
+                        <group>
+                            <field name="customer_address_number"/>
+                            <field name="customer_phone_number"/>
+
+                        </group>
+                    </group>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options='{"thread_level": 1}'/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!--    action of the patients menu-->
+    <record id="action_customer" model="ir.actions.act_window">
+        <field name="name">Customer Info</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">customer.info</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="customer_info_tree"/>
+    </record>
+
+
+    <menuitem id="customer_sub_menu" parent="configuration_vehicle" name="Customer" action="action_customer" sequence="2"/>
+    <!-- <menuitem id="vehicle_profile_menu"  parent="wiki_sub_menu"/>   -->
+</odoo>
