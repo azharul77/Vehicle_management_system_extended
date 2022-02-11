@@ -55,7 +55,7 @@ Something about the App.
     'currency': 'EUR',
     'license': 'OPL-1',
     'contributors': [
-        'A.T.M Shamiul Bashir <https://shamiulbashir.github.io>',
+        'Azharul Amin Mulla',
     ],
         
 }
