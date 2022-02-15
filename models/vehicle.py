@@ -14,8 +14,8 @@ class VehicleInfo(models.Model):
         ('3wheeler', '3 Wheeler'),
         ('4wheeler', '4 Wheeler'),
     ], default='2wheeler', String='Vehicle Type')
-    vehicle_model = fields.Many2one("vehicle.model", string='Vehicle Model', required=True)
-    vehicle_owner = fields.Many2one("customer.info", string='Owner Name ', required=True)
+    vehicle_model = fields.Many2one("fleet.vehicle.model", string='Vehicle Model', required=True)
+    vehicle_owner = fields.Many2one("res.partner", string='Owner Name ', required=True)
     customer_phone_number = fields.Char(string='Customer Phone Number')
     # service_date = fields.Date(string='Date Of Servoce', required=True)
     # service_list = fields.Many2many(
@@ -40,7 +40,7 @@ class VehicleInfo(models.Model):
     def onchange_vehicle_owner(self):
         for rec in self:
             if rec.vehicle_owner:
-                rec.customer_phone_number = rec.vehicle_owner.customer_phone_number
+                rec.customer_phone_number = rec.vehicle_owner.phone
 
 
 

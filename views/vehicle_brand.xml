@@ -49,5 +49,10 @@
 
 
     <menuitem id="vehicle_brand_sub_menu" parent="configuration_vehicle" name="Vehicle Brand" action="action_vehicle_brand" sequence="4"/>
+     <menuitem id="res_partner_menu_customer"
+            name="CRM Customers"
+            parent="configuration_vehicle"
+            action="base.action_partner_form"
+            sequence="10"/>
 
 </odoo>

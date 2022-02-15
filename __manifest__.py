@@ -8,8 +8,7 @@ App Name
 Something about the App.
     """,
     'version': '13.0.1.0',
-    'author': 'A.T.M Shamiul Bashir',
-    'website': 'http://shamiulbashir.github.io',
+    'author': 'MD AZHARUL AMIN MULLA',
     'category': 'Tools',
     'sequence': 1,
     'depends': [
@@ -17,6 +16,8 @@ Something about the App.
         'account',
         'web',
         'mail',
+        'crm',
+        'fleet',
     ],
     'data': [
 
@@ -30,9 +31,8 @@ Something about the App.
         
         ## View & Wizard
         'views/vehicle_info.xml',
-        'views/services.xml',
         'views/customer.xml',
-        'views/vehicle_model.xml',
+        'views/services.xml',
         'views/vehicle_brand.xml',
         'views/vehicle_repair.xml',
 
@@ -44,7 +44,7 @@ Something about the App.
             'werkzeug',
         ],
     },
-    'icon': '/vehicle_managment_system/static/description/car.png',
+    'icon': '/Vehicle_management_system_extended/static/description/car.png',
     'images': [
         'static/description/banner.png',
     ],

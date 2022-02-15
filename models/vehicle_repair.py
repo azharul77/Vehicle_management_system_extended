@@ -11,7 +11,7 @@ class VehicleRepair(models.Model):
 
     vehicle_number = fields.Many2one("vehicle.info", string='Vehicle Number', required=True)
     name = fields.Char(string="Code", readonly=True)
-    vehicle_owner = fields.Many2one("customer.info", string='Owner Name ', required=True)
+    vehicle_owner = fields.Many2one("res.partner", string='Owner Name ', required=True)
     customer_phone_number = fields.Char(string='Customer Phone Number')
     service_date = fields.Date(string='Date Of Service', required=True)
     service_list = fields.Many2many("vehicle.services", string="Services")
@@ -114,10 +114,16 @@ class VehicleRepair(models.Model):
         for rec in self:
             if rec.vehicle_number:
                 rec.vehicle_owner = rec.vehicle_number.vehicle_owner
-                rec.customer_phone_number = rec.vehicle_number.vehicle_owner.customer_phone_number
+                rec.customer_phone_number = rec.vehicle_number.vehicle_owner.phone
                 old_customer_id = self.search([('vehicle_number', '=', self.vehicle_number.id)], order='id desc', limit=1)
                 if old_customer_id:
                     self.customer_type = 'old'
                 else:
                     self.customer_type = 'new'
+
+    @api.onchange('vehicle_owner')
+    def onchange_vehicle_owner(self):
+        for rec in self:
+            if rec.vehicle_owner:
+                rec.customer_phone_number = rec.vehicle_owner.phone
 
