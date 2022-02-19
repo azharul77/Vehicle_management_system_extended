@@ -1,9 +1,14 @@
 from odoo import models, fields, _, api
 from odoo.exceptions import ValidationError
 
-# class InheritCrm(models.Model):
-#     _inherit = ['res.partner']
-#     name = fields.Many2one( string="Vehicle Customer name", required=True)
+
+class CrmInherit(models.Model):
+    _inherit = ['res.partner']
+
+    aadhar_number = fields.Char(string='Aadhar Card No.')
+    esi_number = fields.Char(string='ESI No.')
+    vehicle_registration_number = fields.One2many('vehicle.info', 'vehicle_owner', string="Vehicle Number")
+
 
 class CustomerInfo(models.Model):
     _name = 'customer.info'

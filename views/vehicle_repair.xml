@@ -12,7 +12,7 @@
                 <field name="service_date"/>
                 <field name="service_list"/>
                 <field name="service_amount_move_id"/>
-                <field name="invoice_payment_status"/>
+<!--                <field name="invoice_payment_status"/>-->
                 <field name="old_customer"/>
             </tree>
         </field>
@@ -36,7 +36,7 @@
                             <field name="service_date"/>
                             <field name="old_customer"/>
                             <field name="service_amount_move_id"/>
-                            <field name="invoice_payment_status"/>
+<!--                            <field name="invoice_payment_status"/>-->
                         </group>
                     </group>
                     <field name="service_list"/>

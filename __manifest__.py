@@ -7,7 +7,7 @@ App Name
 ========
 Something about the App.
     """,
-    'version': '13.0.1.0',
+    'version': '14.0.1.0',
     'author': 'MD AZHARUL AMIN MULLA',
     'category': 'Tools',
     'sequence': 1,
@@ -18,6 +18,7 @@ Something about the App.
         'mail',
         'crm',
         'fleet',
+        'hr',
     ],
     'data': [
 
@@ -55,7 +56,7 @@ Something about the App.
     'currency': 'EUR',
     'license': 'OPL-1',
     'contributors': [
-        'Azharul Amin Mulla',
+
     ],
         
 }

@@ -1,6 +1,11 @@
 from odoo import models, fields, _, api
 from odoo.exceptions import ValidationError
 
+class InheritHr(models.Model):
+    _inherit = 'hr.employee'
+    aadhar_no = fields.Char(string='Aadhar Card No.')
+    esi_no = fields.Char(string='ESI No.')
+    vehicle_number = fields.Char(string='Vehicle Number')
 
 class VehicleInfo(models.Model):
     _name = 'vehicle.info'
@@ -17,6 +22,7 @@ class VehicleInfo(models.Model):
     vehicle_model = fields.Many2one("fleet.vehicle.model", string='Vehicle Model', required=True)
     vehicle_owner = fields.Many2one("res.partner", string='Owner Name ', required=True)
     customer_phone_number = fields.Char(string='Customer Phone Number')
+    vehicle_registration_date = fields.Date(string='Vehicle Registration Date')
     # service_date = fields.Date(string='Date Of Servoce', required=True)
     # service_list = fields.Many2many(
     #     "vehicle.services", "vehicle_service_rel", "vehicle_id", "service_id", string="Services")
