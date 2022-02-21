@@ -19,6 +19,8 @@ Something about the App.
         'crm',
         'fleet',
         'hr',
+        'sale',
+        'mrp',
     ],
     'data': [
 
@@ -36,6 +38,7 @@ Something about the App.
         'views/services.xml',
         'views/vehicle_brand.xml',
         'views/vehicle_repair.xml',
+        'views/download.xml',
 
     ],
     'qweb': [],
