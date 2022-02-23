@@ -41,4 +41,11 @@ class download(models.Model):
         }
 
 
+class PurchaseOrder(models.Model):
+    _inherit = ['purchase.order']
+
+    signature = fields.Binary(string="Signature", attachment=True, store=True)
+
+
+
 

@@ -21,6 +21,7 @@ Something about the App.
         'hr',
         'sale',
         'mrp',
+        'purchase',
     ],
     'data': [
 
