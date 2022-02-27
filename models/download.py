@@ -16,23 +16,13 @@ class download(models.Model):
         result = b''
 
         for rec in attachment_ids:
-            print(attachment_ids)
-            print(rec)
             result += rec.datas
-            print(result)
             attachment_obj = self.env['ir.attachment']
-            print(attachment_obj)
             attachment_id = attachment_obj.sudo().create(
                 {'name': "name", 'store_fname': 'awb.pdf', 'datas': rec.datas})
-            print(attachment_id)
             download_url = '/web/content/' + str(attachment_id.id) + '?download=true'
-            print(download_url)
-            self.get_report(download_url)
-            print(self.get_report(download_url))
 
-    def get_report(self, download_url):
         base_url = self.env['ir.config_parameter'].get_param('web.base.url')
-        print(base_url)
         return {
             'name': 'Report',
             'type': 'ir.actions.act_url',
