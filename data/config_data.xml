@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--        config data for vehicle service-->
+        <record model="vehicle.services" id="vehicle_service_1">
+            <field name="name">Painting</field>
+            <field name="service_charge">1200</field>
+        </record>
+
+        <!--        Data configuration in activity of CRM-->
+        <record model="mail.activity.type" id="setting_activity_crm">
+            <field name="name">Contract to Renew</field>
+            <field name="next_type_ids" eval="[(6, 0, [ref('email'), ref('call')])]"/>
+        </record>
+
+        <!--        Quotation data configuration-->
+        <record model="sale.order" id="quotation_config_sale">
+            <field name="partner_id" ref="crm.crm_case_11"/>
+            <field name="pricelist_id" ref="product.list0"/>
+            <field name="payment_term_id" ref="account.account_payment_term_immediate"/>
+        </record>
+
+<!--        Added jacket as demo data in product-->
+        <record model="product.template" id="product_demo_data_1">
+            <field name="name">Jacket</field>
+            <field name="type">product</field>
+            <field name="catg_id" ref="product.product_category_all"/>
+            <field name="list_price">100</field>
+            <field name="standard_price">80</field>
+             <field name="uom_id" ref="uom.product_uom_unit"/>
+             <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+<!--        Added Shirt as demo data in product-->
+        <record model="product.template" id="product_demo_data_1">
+            <field name="name">Shirt</field>
+            <field name="type">product</field>
+            <field name="catg_id" ref="product.product_category_all"/>
+            <field name="list_price">200</field>
+            <field name="standard_price">150</field>
+             <field name="uom_id" ref="uom.product_uom_unit"/>
+             <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+<!--        demo data for creating invoice-->
+        <record model="account.move" id="invoice_demo_data">
+            <field name="partner_id" ref="crm.crm_case_11"/>
+            <field name="payment_reference">abc123</field>
+            <field name="currency_id" ref="currency.base.INR"/>
+        </record>
+<!--           demo data for creating requesting for quotation-->
+        <record model="purchase.order" id="rfq_demo_data">
+            <field name="partner_id" ref="crm.crm_case_11"/>
+            <field name="partner_ref">abc123</field>
+            <field name="currency_id" ref="currency.base.INR"/>
+        </record>
+
+    </data>
+</odoo>
