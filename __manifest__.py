@@ -28,6 +28,7 @@ Something about the App.
         ## Security
         'security/ir.model.access.csv',
         'data/ir_sequence.xml',
+        'data/config_data.xml',
 
         ## Report
         # 'reports/report_paper_format.xml',
