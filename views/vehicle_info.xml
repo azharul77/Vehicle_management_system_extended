@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+      <record id="hr_employee_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <field name="coach_id" position="after">
+                <field name="aadhar_no"/>
+                <field name="esi_no"/>
+                <field name="vehicle_number"/>
+            </field>
+        </field>
+     </record>
+
     <record id="vehicle_info_tree" model="ir.ui.view">
         <field name="name">vehicle.info.tree</field>
         <field name="model">vehicle.info</field>
@@ -10,6 +24,7 @@
                 <field name="vehicle_type"/>
                 <field name="vehicle_model"/>
                 <field name="vehicle_owner"/>
+                <field name="vehicle_registration_date"/>
                 <field name="customer_phone_number"/>
                 <field name="notes"/>
 
@@ -30,6 +45,7 @@
                             <field name="vehicle_type"/>
                         </group>
                         <group>
+                            <field name="vehicle_registration_date"/>
                             <field name="vehicle_owner"/>
                             <field name="vehicle_model"/>
                             <field name="customer_phone_number"/>

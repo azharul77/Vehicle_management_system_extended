@@ -11,17 +11,17 @@ class VehicleRepair(models.Model):
 
     vehicle_number = fields.Many2one("vehicle.info", string='Vehicle Number', required=True)
     name = fields.Char(string="Code", readonly=True)
-    vehicle_owner = fields.Many2one("customer.info", string='Owner Name ', required=True)
+    vehicle_owner = fields.Many2one("res.partner", string='Owner Name ', required=True)
     customer_phone_number = fields.Char(string='Customer Phone Number')
     service_date = fields.Date(string='Date Of Service', required=True)
     service_list = fields.Many2many("vehicle.services", string="Services")
     service_amount_move_id = fields.Many2one(comodel_name="account.move", string="Invoice", track_visibility='onchange', readonly=True)
-    invoice_payment_status = fields.Selection(selection=[
+    payment_state = fields.Selection(selection=[
         ('not_paid', 'Not Paid'),
         ('in_payment', 'In Payment'),
         ('paid', 'Paid')],
         string='Invoice Status', store=True, readonly=True, copy=False, tracking=True,
-        related='service_amount_move_id.invoice_payment_state')
+        related='service_amount_move_id.payment_state')
 
     discount_rate = fields.Float('Discount of %')
     old_customer = fields.Many2one("vehicle.repair", string='Old Customer', readonly=True)
@@ -62,7 +62,7 @@ class VehicleRepair(models.Model):
                         'name': "INV/Vehicle/" + str(datetime.now().year) + "/" + str(record.id) + "/" + str(record.vehicle_owner.name),
                         'partner_id': record.id,
                         'ref': str(record.vehicle_owner.name),
-                        'type': 'out_invoice',
+                        'move_type': 'out_invoice',
                         'invoice_date': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                         'invoice_line_ids': invoice_line_ids,
                     })
@@ -92,7 +92,7 @@ class VehicleRepair(models.Model):
                         'name': "INV/Vehicle/" + str(datetime.now().year) + "/" + str(record.id) + "/" + str(record.vehicle_owner.name),
                         'partner_id': record.id,
                         'ref': str(record.vehicle_owner.name),
-                        'type': 'out_invoice',
+                        'move_type': 'out_invoice',
                         'invoice_date': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                         'invoice_line_ids': invoice_line_ids,
 
@@ -114,10 +114,16 @@ class VehicleRepair(models.Model):
         for rec in self:
             if rec.vehicle_number:
                 rec.vehicle_owner = rec.vehicle_number.vehicle_owner
-                rec.customer_phone_number = rec.vehicle_number.vehicle_owner.customer_phone_number
+                rec.customer_phone_number = rec.vehicle_number.vehicle_owner.phone
                 old_customer_id = self.search([('vehicle_number', '=', self.vehicle_number.id)], order='id desc', limit=1)
                 if old_customer_id:
                     self.customer_type = 'old'
                 else:
                     self.customer_type = 'new'
+
+    @api.onchange('vehicle_owner')
+    def onchange_vehicle_owner(self):
+        for rec in self:
+            if rec.vehicle_owner:
+                rec.customer_phone_number = rec.vehicle_owner.phone
 

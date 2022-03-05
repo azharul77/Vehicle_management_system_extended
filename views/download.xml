@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="model_sale_order_action_download_attachment" model="ir.actions.server">
+            <field name="name">Download Attachments</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.generate_awb_pdf()</field>
+        </record>
+
+    <record id="purchase_form_inherit" model="ir.ui.view">
+        <field name="name">purchase.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <field name="requisition_id" position="after">
+                    <field name="signature" widget="image" class="oe_avatar oe_left"/>
+            </field>
+        </field>
+     </record>
+</odoo>
