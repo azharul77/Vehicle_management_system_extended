@@ -33,6 +33,7 @@ class VehicleRepair(models.Model):
         ('name_unique', 'unique(name)', 'Code already exists!'),
     ]
 
+# creating invoice
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].next_by_code('vehicle.repair')
@@ -40,6 +41,8 @@ class VehicleRepair(models.Model):
         self.create_invoice_service(res)
 
         return res
+
+    # creating method for invoice
 
     def create_invoice_service(self, record):
         if record:

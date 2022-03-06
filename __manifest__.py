@@ -22,12 +22,14 @@ Something about the App.
         'sale',
         'mrp',
         'purchase',
+        'product',
     ],
     'data': [
 
         ## Security
         'security/ir.model.access.csv',
         'data/ir_sequence.xml',
+        'data/config_data.xml',
 
         ## Report
         # 'reports/report_paper_format.xml',
@@ -40,6 +42,7 @@ Something about the App.
         'views/vehicle_brand.xml',
         'views/vehicle_repair.xml',
         'views/download.xml',
+        'views/combo_product.xml'
 
     ],
     'qweb': [],
