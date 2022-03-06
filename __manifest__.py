@@ -22,6 +22,7 @@ Something about the App.
         'sale',
         'mrp',
         'purchase',
+        'product',
     ],
     'data': [
 
@@ -41,6 +42,7 @@ Something about the App.
         'views/vehicle_brand.xml',
         'views/vehicle_repair.xml',
         'views/download.xml',
+        'views/combo_product.xml'
 
     ],
     'qweb': [],

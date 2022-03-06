@@ -5,3 +5,4 @@ access_for_vehicle_services,vehicle_management,model_vehicle_services,base.group
 access_for_customer_info,vehicle_management,model_customer_info,base.group_user,1,1,1,1
 access_for_vehicle_brand,vehicle_management,model_vehicle_brand,base.group_user,1,1,1,1
 access_for_vehicle_repair,vehicle_management,model_vehicle_repair,base.group_user,1,1,1,1
+access_product_combo,access.product.combo,model_product_combo,,1,1,1,1

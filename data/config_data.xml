@@ -52,7 +52,7 @@
         <record model="purchase.order" id="rfq_demo_data">
             <field name="partner_id" ref="crm.crm_case_11"/>
             <field name="partner_ref">abc123</field>
-            <field name="currency_id" ref="currency.base.INR"/>
+<!--            <field name="currency_id" ref="currency.base.INR"/>-->
         </record>
 
     </data>
